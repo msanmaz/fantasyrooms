@@ -12,7 +12,7 @@ import commerce from '../lib/commerce'
 
 export const Navbar = ({totalItems,line_items}) => {
   const { id } = useCartState()
-console.log(id)
+console.log(totalItems)
 
     const [isOpen, setIsOpen] = useState(true);
     const [isDrop, setIsDrop] = useState(false);
