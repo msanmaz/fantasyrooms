@@ -89,7 +89,7 @@ console.log(totalItems)
 
       <>
         
-        <div className="bg-white w-full sticky top-0 z-50">
+        <div className="bg-white w-full sticky top-0 z-30">
 
             <div className ={`fixed inset-0  z-40 ${isOpen ? 'hidden' : 'flex'}` } role="dialog" aria-modal="true">
 
@@ -515,7 +515,7 @@ console.log(totalItems)
         {/* <!-- Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow --> */}
             <div className ="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true"></div>
 
-            <div className ={`bg-white z-50	 ${isDrop ? 'relative' : 'hidden'} `} onClick={toggle}>
+            <div className ={`bg-white z-30	 ${isDrop ? 'relative' : 'hidden'} `} onClick={toggle}>
             <div className ="max-w-7xl mx-auto px-8">
             <div className ="grid grid-cols-2 gap-y-10 gap-x-8 py-16">
             <div className ="col-start-2 grid grid-cols-2 gap-x-8">
@@ -692,7 +692,7 @@ console.log(totalItems)
         {/* <!-- Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow --> */}
             <div className ="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true"></div>
 
-            <div className ={`bg-white z-50	 ${isDropMen ? 'relative' : 'hidden'} `}>
+            <div className ={`bg-white z-30	 ${isDropMen ? 'relative' : 'hidden'} `}>
             <div className ="max-w-7xl mx-auto px-8">
             <div className ="grid grid-cols-2 gap-y-10 gap-x-8 py-16">
             <div className ="col-start-2 grid grid-cols-2 gap-x-8">
@@ -893,8 +893,10 @@ console.log(totalItems)
         </div>
 
 
-        <div className={`z-50 overflow-hidden ${isSideBar ? 'fixed' : 'hidden'}`} aria-labelledby="slide-over-title" role="dialog" aria-modal="true" ref={refTwo}>
-<div className="overflow-hidden">
+        <aside
+                            className={`z-50 transform top-0 right-0 w-full fixed h-full overflow-auto ease-in-out rounded-l-xl transition-all duration-700 "
+                                    ${isSideBar ? 'translate-x-0 visible' : 'translate-x-full invisible'}`}>
+                                      <div className="overflow-hidden">
   {/* <!--
     Background overlay, show/hide based on slide-over state.
 
@@ -1003,7 +1005,7 @@ console.log(totalItems)
     </div>
   </div>
 </div>
-</div>  
+</aside>  
 
         </>
     )

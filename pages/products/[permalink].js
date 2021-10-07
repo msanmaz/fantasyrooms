@@ -2,6 +2,9 @@ import { useState } from 'react'
 import commerce from '../../lib/commerce'
 import { useCartDispatch } from '../../context/cart'
 
+
+
+
 export async function getStaticProps({ params }) {
   const { permalink } = params
 
@@ -71,3 +74,9 @@ console.log(quantity)
     </>
   )
 }
+
+
+
+
+
+
