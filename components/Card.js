@@ -11,7 +11,7 @@ import Link from 'next/link'
 
 
 
-function Card({image,name,price,id}) {
+function Card({image,name,price,id,permalink}) {
     const [open, setOpen] = React.useState(false);
     const handleClick = () => {
       setOpen(true);
@@ -65,11 +65,12 @@ function Card({image,name,price,id}) {
                         </svg>
                         Add To Cart
                     </button>
-
-
+                    <Link href={`/products/${permalink}`}>
                     <button className="bg-gray-400 w-full hover:bg-gray-100 hover:text-black flex justify-center text-white font-bold py-2 px-4 text-base rounded-lg">
                         Details
                     </button>
+                    </Link>
+
 
         </div>
 

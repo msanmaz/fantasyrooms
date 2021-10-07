@@ -19,13 +19,19 @@ export async function getStaticProps() {
 
 export default function ProductPage({ products }) {
 
-  const [aim, setAim] = useState([])
+  const [aim, setAim] = useState('All')
   const [prod,setProd] = useState()
+
   useEffect(() => {
     commerce.products.list({category_slug:[aim]}).then(result => {
       setProd(result.data);
+      
     });
   }, [aim]);
+
+  useEffect(() => {
+    localStorage.setItem('mydata', JSON.stringify(products))
+  },[])
 
 
 
