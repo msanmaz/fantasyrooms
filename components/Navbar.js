@@ -12,16 +12,15 @@ import commerce from '../lib/commerce'
 
 export const Navbar = ({totalItems,line_items}) => {
   const { id } = useCartState()
-console.log(totalItems)
+
+
+  // TODO SUBTOTAL FROM CART
 
     const [isOpen, setIsOpen] = useState(true);
     const [isDrop, setIsDrop] = useState(false);
     const [isDropMen, setIsDropMen] = useState(false);
 
     const [isSideBar, setIsSideBar] = useState(false);
-
- 
-
 
   
 
@@ -73,6 +72,9 @@ console.log(totalItems)
     }, [isSideBar])
 
     const { setCart } = useCartDispatch()
+  
+    
+
     const handleUpdateCart = ({ cart }) => setCart(cart)
 
     const handleUpdateCartQty =  (productId,quantity) => {
@@ -549,7 +551,10 @@ console.log(totalItems)
             <ul role="list" aria-labelledby="Clothing-heading" className ="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
             <li className ="flex">
             <Link href="/categories/harness" className ="hover:text-gray-800">
-            Harness
+              <p className="hover:text-gray-800 cursor-pointer">
+Harness
+                </p>
+            
             </Link>
             </li>
 
@@ -560,9 +565,10 @@ console.log(totalItems)
             </li>
 
             <li className ="flex">
-            <a href="#" className ="hover:text-gray-800">
-            Garter
-            </a>
+            <Link href="/categories/garter" className ="hover:text-gray-800">
+              <p className ="hover:text-gray-800 cursor-pointer">Garter</p>
+        
+            </Link>
             </li>
 
             <li className ="flex">
@@ -877,11 +883,11 @@ console.log(totalItems)
             </div>
 
             <div className ="ml-4 flow-root lg:ml-6" onClick={() => setIsSideBar(oldState => !oldState)}>
-            <a href="#" className ="group -m-2 p-2 flex items-center">
-            <svg className ="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <a href="#" className ="group -m-2 p-2 hover:bg-purple-700 flex items-center bg-purple-600 text-gray-50 p-2 px-4 rounded-full">
+            <svg className ="flex-shrink-0 h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
             </svg>
-            <span className ="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{totalItems}</span>
+            <span className ="ml-2 text-sm font-medium text-white ">Cart {totalItems}</span>
             <span className ="sr-only">items in cart, view bag</span>
             </a>
             </div>
@@ -989,7 +995,8 @@ console.log(totalItems)
         <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
           <div className="flex justify-between text-base font-medium text-gray-900">
             <p>Subtotal</p>
-            {/* <p>{subtotal.formatted_with_symbol}</p> */}
+    
+
           </div>
           <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
           <Link href={`/checkout/${id}`} className="mt-6">

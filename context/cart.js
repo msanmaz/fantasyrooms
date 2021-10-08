@@ -36,6 +36,7 @@ export const CartProvider = ({ children }) => {
   const setCart = (payload) => {
     dispatch({ type: SET_CART, payload })
   }
+  
 
   const getCart = async () => {
     try {

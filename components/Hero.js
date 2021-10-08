@@ -4,7 +4,7 @@ import Link from 'next/link'
 const Hero = () => {
     return (
 <div className=" bg-white overflow-hidden bg-cover lg:inset-y-0 lg:right-0 lg:w-full"
-style={{'background-image': 'linear-gradient(rgba(0 0 0 / 60%), rgba(0 0 0 /60%)), url(/slide2-lingerie.jpeg)',
+style={{'background-image': 'linear-gradient(rgba(0 0 0 / 60%), rgba(0 0 0 /60%)), url(/slide1-lingerie.jpeg)',
 'max-height':'65vh'
 }}
 

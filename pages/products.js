@@ -72,7 +72,7 @@ return (
                 </div>
 
               </div>
-              <div className="w-full h-screen my-8 shadow-md bg-gray-300 rounded-lg">
+              <div className="w-full h-screen my-8 shadow-md bg-gray-300 rounded-lg -mt-20 ">
                 <h1 className="text-2xl font-italic px-12 py-4">Newsletter</h1>
                 <h2 className="text-sm px-12">Get the latest updates, news and product offers via email</h2>
                 <div className="px-12 py-4">
@@ -112,7 +112,7 @@ return (
 
 
               <div className="bg-white">
-                <div className="max-w-2xl mx-auto px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+                <div className="max-w-2xl py-14 mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
 
                   {prod == undefined ?
                                     <div className="grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
