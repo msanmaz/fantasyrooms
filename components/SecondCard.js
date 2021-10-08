@@ -42,7 +42,7 @@ const SecondCard = ({image,name,price,id,permalink}) => {
         <div className="px-2 lg:px-4">
                   <div class="shadow-lg rounded-lg">
         <a href="#">
-          <img src={image.url} class="rounded-tl-lg rounded-tr-lg h-full" />
+          <img src={image.url} class="w-full h-40  object-center object-cover lg:w-full lg:h-full" />
         </a>
         <div class="p-2 lg:p-5">
           <h3><a href="#">{name.substring(0,18)}</a></h3>
