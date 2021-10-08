@@ -39,13 +39,13 @@ const SecondCard = ({image,name,price,id,permalink}) => {
         <>
 
 
-        <div className="px-4">
+        <div className="px-2 lg:px-4">
                   <div class="shadow-lg rounded-lg">
         <a href="#">
           <img src={image.url} class="rounded-tl-lg rounded-tr-lg h-full" />
         </a>
-        <div class="p-5">
-          <h3><a href="#">{name}</a></h3>
+        <div class="p-2 lg:p-5">
+          <h3><a href="#">{name.substring(0,18)}</a></h3>
           <h2>{price.formatted_with_symbol}</h2>
           <div class="flex flex-row my-3">
             <div class="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
@@ -54,7 +54,7 @@ const SecondCard = ({image,name,price,id,permalink}) => {
             <div class="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
             <div class="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
           </div>
-          <div class="flex lg:flex-row flex-wrap my-3">
+          <div class="lg:flex-row flex-wrap hidden my-3">
             <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs" href="#">XL</a>
             <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs" href="#">XXL</a>
             <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs" href="#">L</a>
