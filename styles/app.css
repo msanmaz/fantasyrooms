@@ -815,6 +815,9 @@ video {
 .h-24 {
 	height: 6rem;
 }
+.h-40 {
+	height: 10rem;
+}
 .w-5 {
 	width: 1.25rem;
 }
@@ -1009,12 +1012,6 @@ video {
 .rounded-l-xl {
 	border-top-left-radius: 0.75rem;
 	border-bottom-left-radius: 0.75rem;
-}
-.rounded-tl-lg {
-	border-top-left-radius: 0.5rem;
-}
-.rounded-tr-lg {
-	border-top-right-radius: 0.5rem;
 }
 .border {
 	border-width: 1px;
@@ -2008,6 +2005,10 @@ h-tam{
 
 
 @media (min-width: 1024px) {
+
+	.lg\:visible {
+		visibility: visible;
+	}
 
 	.lg\:inset-y-0 {
 		top: 0px;
