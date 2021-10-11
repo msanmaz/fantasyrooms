@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import commerce from '../../lib/commerce'
+
+import commerce from 'lib/commerce'
 
 export default function Checkout() {
   const [liveObject, setLiveObject] = useState(null)

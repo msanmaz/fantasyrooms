@@ -1,16 +1,12 @@
 import { useState } from 'react'
-import commerce from '../../lib/commerce'
-import { useCartDispatch } from '../../context/cart'
 
-
-
+import commerce from 'lib/commerce'
+import { useCartDispatch } from 'lib/context/cart'
 
 export async function getStaticProps({ params }) {
-  const { permalink } = params
+  const { id } = params
 
-  const product = await commerce.products.retrieve(permalink, {
-    type: 'permalink'
-  })
+  const product = await commerce.products.retrieve(id)
 
   return {
     props: {
@@ -26,7 +22,7 @@ export async function getStaticPaths() {
   return {
     paths: products.map((product) => ({
       params: {
-        permalink: product.permalink
+        id: product.id
       }
     })),
     fallback: false

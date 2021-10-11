@@ -1,16 +1,12 @@
-import commerce from '../lib/commerce'
-import React from 'react';
-import ProductList from '../components/products/productList'
-import CategoryList from '../components/category/categoryList'
-import Layout from '../layout/layout'
 import Link from 'next/link'
-import Hero from '../components/Hero'
-import Cats from '../components/Cats'
 
-import Card from '../components/Card'
-import SecondCard from '../components/SecondCard';
-
-
+import CategoryList from 'components/category/categoryList'
+import Cats from 'components/Cats'
+import commerce from 'lib/commerce'
+import Hero from 'components/Hero'
+import Layout from 'components/layout'
+import ProductList from 'components/products/productList'
+import SecondCard from 'components/SecondCard'
 
 export async function getStaticProps() {
   const merchant = await commerce.merchants.about()
@@ -57,7 +53,7 @@ export default function Home({ merchant, products, categories }) {
       <div className="bg-white">
         <div className="max-w-2xl mx-auto py-8 px-4 sm:py-16 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-extrabold tracking-tight flex justify-center text-gray-900">Customers also purchased</h2>
-          <div className="mt-6 grid grid-cols-2 gap-y-10 gap-x-2 lg:gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          <div className="mt-6 grid grid-cols-2 gap-y-10 gap-x-1 lg:gap-x-1 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-1">
 
             {products.map((product) => (
 
@@ -66,7 +62,7 @@ export default function Home({ merchant, products, categories }) {
           </div>
           <h2 className="flex justify-center text-bold py-12">
             View All              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
           </h2>
         </div>

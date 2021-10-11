@@ -1,23 +1,17 @@
-import '../styles/tailwind.css'
-import { CartProvider, ModalProvider, CheckoutProvider } from '../context'
-import React from 'react'
+import Layout from 'components/layout'
+import { CartProvider, ModalProvider, CheckoutProvider } from 'lib/context'
+import 'styles/tailwind.css'
 
-function MyApp({ Component, pageProps }) {
-  const Layout = Component.Layout ? Component.Layout : React.Fragment;
-
-  return (
+const App = ({ Component, pageProps }) => (
     <ModalProvider>
       <CartProvider>
         <CheckoutProvider>
           <Layout>
-          <Component {...pageProps} /> 
+            <Component {...pageProps} /> 
           </Layout>
         </CheckoutProvider>
       </CartProvider>
     </ModalProvider>
-
-
   )
-}
 
-export default MyApp
+export default App

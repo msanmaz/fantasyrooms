@@ -1,5 +1,5 @@
-import CategoryList from '../components/category/categoryList'
-import commerce from '../lib/commerce'
+import commerce from 'lib/commerce'
+import CategoryList from 'components/category/categoryList'
 
 export async function getStaticProps() {
   const { data: categories } = await commerce.categories.list()

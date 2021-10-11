@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import commerce from '../lib/commerce'
-import { useCartState, useCartDispatch } from '../context/cart'
+import commerce from 'lib/commerce'
+
+import { useCartState, useCartDispatch } from 'lib/context/cart'
 
 function CartItem({ id, name, quantity, line_total, cartId }) {
   const { setCart } = useCartDispatch()
@@ -44,8 +45,6 @@ export default function CartPage() {
   const { line_items, subtotal, id } = useCartState()
   const isEmpty = line_items.length === 0
 
-
-
   if (isEmpty) return <h1> The cart is empty</h1>
 
   return (
@@ -55,7 +54,8 @@ export default function CartPage() {
         <CartItem key={item.id} cartId={id} {...item} />
       ))}
       <hr />
-      <strong>SubTotal</strong> {subtotal.formatted_with_symbol}
+      <strong>SubTotal</strong>
+      <div className='subtotal_value'>{subtotal.formatted_with_symbol}</div>
       <Link href={`/checkout/${id}`}>
         <a>Checkout</a>
       </Link>

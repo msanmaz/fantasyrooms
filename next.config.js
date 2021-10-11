@@ -1,5 +1,14 @@
+const path = require('path')
+
 module.exports = {
-  env: {
-    NEXT_PUBLIC_CHEC_API_KEY: 'pk_test_27867fd7376b57237208f38ca0c8029819c4d633f0e5e'
-  }
+	reactStrictMode: false,
+	sassOptions: {
+		  includePaths: [path.join(__dirname, 'styles')],
+	  },
+	eslint: {
+		  ignoreDuringBuilds: true,
+	  },
+	  serverRuntimeConfig: {
+		  PROJECT_ROOT: __dirname,
+	  },
 }

@@ -3,15 +3,15 @@ import { useState, useEffect } from 'react'
 import {useRef} from "react"
 import onClickOutside from "react-onclickoutside";
 import Link from 'next/link'
-import { useCartState, useCartDispatch } from '../context/cart'
-import commerce from '../lib/commerce'
+import { useCartState, useCartDispatch } from 'lib/context/cart'
+import commerce from 'lib/commerce'
 
+export const Navbar = () => {
+  // const { subtotal } = useCartState()
 
-
-
-
-export const Navbar = ({totalItems,line_items}) => {
-  const { id } = useCartState()
+  const cartState = useCartState()
+  console.log('Navbar render cart state:', cartState)
+  const {subtotal, line_items ,id,totalItems} = cartState
 
 
   // TODO SUBTOTAL FROM CART
@@ -887,7 +887,7 @@ Harness
             <svg className ="flex-shrink-0 h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
             </svg>
-            <span className ="ml-2 text-sm font-medium text-white ">Cart {totalItems}</span>
+            <span className ="ml-2 text-sm font-medium text-white ">Cart {line_items.length}</span>
             <span className ="sr-only">items in cart, view bag</span>
             </a>
             </div>
@@ -983,10 +983,7 @@ Harness
                    </div>
                  </div>
                </li>
-
       ))}
-               
-
               </ul>
             </div>
           </div>
@@ -995,8 +992,7 @@ Harness
         <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
           <div className="flex justify-between text-base font-medium text-gray-900">
             <p>Subtotal</p>
-    
-
+            <div className='subtotal_value'>{subtotal?.formatted_with_symbol || '---'}</div>
           </div>
           <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
           <Link href={`/checkout/${id}`} className="mt-6">

@@ -1,9 +1,9 @@
-import commerce from '../../lib/commerce'
-import ProductList from '../../components/products/productList'
-import Card from '../../components/Card'
 import Link from 'next/link'
-import Button from '../../components/Button'
-import Layout from '../../layout/layout'
+
+import commerce from 'lib/commerce'
+import SecondCard from 'components/SecondCard'
+import Layout from 'components/layout'
+import ProductList from 'components/products/productList'
 
 export async function getStaticPaths() {
   const { data: categories } = await commerce.categories.list()
@@ -38,9 +38,7 @@ export async function getStaticProps({ params }) {
 }
 
 export default function CategoryPage({ category, products }) {
-  const printButtonLabel = (event) => {
-    setAim(event.target.name)
-  };
+  console.log(category)
   return (
     <>
    
@@ -101,7 +99,6 @@ export default function CategoryPage({ category, products }) {
                 <div className="flex w-full" data-aos-id-blocks>
 
                   <div className="md:px-1 px-auto space-y-2 space-x-2">
-                    <Button buttons={["All", "Harness", "Garter", "Leather", "Latex", "Fetish"]} doSomethingAfterClick={printButtonLabel} />
                   </div>
 
                 </div>
@@ -118,7 +115,7 @@ export default function CategoryPage({ category, products }) {
 
                                     {products.map((product) => (
                 
-                                      <Card {...product} key={product.id} />
+                                      <SecondCard {...product} key={product.id} />
                                     ))}
                                   </div>
       
