@@ -27,8 +27,6 @@ export default function Home({ merchant, products, categories }) {
 
 
 
-
-
   return (
     <>
 

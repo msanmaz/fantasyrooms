@@ -6,12 +6,14 @@
     "build-css": "cross-env NODE_ENV=production tailwindcss build styles/tailwind.css -o styles/app.css",
     "dev-css": "cross-env NODE_ENV=development tailwindcss build styles/tailwind.css -o styles/app.css",
     "next-dev": " next dev",
+    "dev2": "tailwindcss build styles/tailwind.css -o styles/app.css && next dev",
     "dev": "concurrently \"npm run next-dev\" \"npm run dev-css\"",
     "next-build": "cross-env NODE_ENV=production next build && next export",
     "build": "concurrently \"npm run next-build\" \"npm run build-css\"",
     "start": "next start",
     "export": "next export -o build/",
-    "buildnext": "next build"
+    "buildnext": "next build",
+    "cache": "node lib/cache.js"
   },
   "dependencies": {
     "@chec/commerce.js": "^2.6.0",
