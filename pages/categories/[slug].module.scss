@@ -1,0 +1,25 @@
+.category {
+	background-color: #c40d96;
+	border-radius: 28px;
+	border: 1px solid #a01471;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 13px;
+	padding: 8px 20px;
+	text-decoration: none;
+
+	&:hover {
+		background-color: #2f0da8;
+	}
+
+	&.current {
+		pointer-events: none;
+		font-weight: bold;
+		text-decoration: underline;
+		font-size: 40;
+		color: red;
+		background-color: blue;
+	}
+}

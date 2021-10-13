@@ -1,17 +1,10 @@
-import Layout from 'components/layout'
-import { CartProvider, ModalProvider, CheckoutProvider } from 'lib/context'
-import 'styles/tailwind.css'
+import { wrapper } from 'lib/redux'
+import Layout from 'components/Layout'
 
-const App = ({ Component, pageProps }) => (
-    <ModalProvider>
-      <CartProvider>
-        <CheckoutProvider>
-          <Layout>
-            <Component {...pageProps} /> 
-          </Layout>
-        </CheckoutProvider>
-      </CartProvider>
-    </ModalProvider>
-  )
+import 'styles/globals.scss'
 
-export default App
+const App = ({ Component, pageProps }) => <Layout Component={Component} pageProps={pageProps} />
+
+const withRedux = wrapper.withRedux(App, { debug: false })
+
+export default withRedux
