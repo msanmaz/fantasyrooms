@@ -7,7 +7,7 @@ import CategoryList from 'components/CategoryList'
 import Cats from 'components/Cats'
 import Hero from 'components/Hero'
 import ProductList from 'components/Products/productList'
-import SecondCard from 'components/SecondCard'
+import ProductCard from 'components/ProductCard'
 
 export const getStaticProps = wrapper.getStaticProps(store => async () => {
 	const props = await readCache()
@@ -55,7 +55,7 @@ export default function Home({ merchant, products, categories }) {
 					<h2 className='text-2xl font-extrabold tracking-tight flex justify-center text-gray-900'>Customers also purchased</h2>
 					<div className='mt-6 grid grid-cols-2 gap-y-10 gap-x-1 lg:gap-x-1 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-1'>
 						{products.map(product => (
-							<SecondCard {...product} key={product.id} />
+							<ProductCard {...product} key={product.id} />
 						))}
 					</div>
 					<h2 className='flex justify-center text-bold py-12'>

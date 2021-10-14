@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import Link from 'next/link'
 
 import { AddShoppingCart } from '@material-ui/icons'
@@ -9,12 +10,10 @@ import Snackbar from '@material-ui/core/Snackbar'
 
 import { addToCart } from 'lib/redux'
 import commerce from 'lib/commerce'
-import { useDispatch } from 'react-redux'
-// import { useCartDispatch } from 'lib/context/cart'
 
-// import styles from 'index.module.css'
+import styles from './index.module.scss'
 
-const SecondCard = ({ image, name, price, id, permalink }) => {
+const ProductCard = ({ image, name, price, id, permalink }) => {
 	const dispatch = useDispatch()
 
 	const [open, setOpen] = useState(false)
@@ -144,4 +143,4 @@ const SecondCard = ({ image, name, price, id, permalink }) => {
 	)
 }
 
-export default SecondCard
+export default ProductCard

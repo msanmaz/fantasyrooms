@@ -1,5 +1,3 @@
-// import { useCartDispatch } from 'lib/context/cart'
-
 import { useState } from 'react'
 import commerce from 'lib/commerce'
 

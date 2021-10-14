@@ -1,10 +1,3 @@
-import React from 'react'
-import ProductImages from './productImage'
+const Product = ({ name, price }) => `${name}: ${price.formatted_with_symbol}`
 
-export default function Product({ name, price }) {
-  return (
-    <React.Fragment>
-      {name}: {price.formatted_with_symbol}
-    </React.Fragment>
-  )
-}
+export default Product

@@ -1,16 +1,13 @@
 import Link from 'next/link'
-
 import commerce from 'lib/commerce'
 import { setServerState, wrapper } from 'lib/redux'
 import { readCache } from 'lib/cache'
-import SecondCard from 'components/SecondCard'
+import ProductCard from 'components/ProductCard'
 import ProductList from 'components/Products/productList'
-
 import styles from './[slug].module.scss'
 
 export const getStaticPaths = async () => {
 	const { categories } = await readCache()
-	// const { data: categories } = await commerce.categories.list()
 
 	return {
 		paths: categories.map(category => ({
@@ -113,7 +110,7 @@ const CategoryPage = ({ category, products }) => {
 							<div className='max-w-2xl py-14 mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
 								<div className='grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'>
 									{products.map(product => (
-										<SecondCard {...product} key={product.id} />
+										<ProductCard {...product} key={product.id} />
 									))}
 								</div>
 							</div>

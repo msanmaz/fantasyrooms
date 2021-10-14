@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Navbar from 'components/Navbar'
+import Cart from 'components/Cart'
 import styles from './index.module.scss'
 
 const Layout = ({ Component, pageProps }) => {
@@ -15,6 +16,7 @@ const Layout = ({ Component, pageProps }) => {
 			</Head>
 			<Navbar />
 			<Component {...pageProps} />
+			<Cart />
 		</div>
 	)
 }

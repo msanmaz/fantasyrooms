@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { setServerState, wrapper } from 'lib/redux'
 import { readCache } from 'lib/cache'
 import useClasses from 'lib/hooks/useClasses'
+import ProductCard from 'components/ProductCard'
 
-import SecondCard from 'components/SecondCard'
 import styles from './index.module.scss'
 
 export const getStaticProps = wrapper.getStaticProps(({ dispatch }) => async () => {
@@ -79,7 +79,7 @@ export default function ProductPage({ products, categories }) {
 	// this function takes products filtered by "categoryProducts" memo and turns them into product cards
 	const productCards = useMemo(() => {
 		console.log('product cards memo cat:', currentCategory)
-		return categoryProducts.map(product => <SecondCard {...product} key={product.id} />)
+		return categoryProducts.map(product => <ProductCard {...product} key={product.id} />)
 	}, [categoryProducts, currentCategory])
 
 	return (
