@@ -1,0 +1,13 @@
+@import "variables";
+
+.product_card {
+	min-width: 256px;
+	// TODO: make product card grid respect card min width
+}
+
+.add_to_cart {
+	@include disabled {
+		opacity: 0.6;
+		background: gray;
+	}
+}

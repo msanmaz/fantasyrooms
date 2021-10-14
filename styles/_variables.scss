@@ -1,0 +1,65 @@
+@import "breakpoints";
+
+//* VARIABLES *//
+
+// Colors
+
+$primary_color: white;
+$primary_bg: black;
+
+$selected_color: white;
+$selected_bg: pink;
+
+$disabled_color: white;
+$disabled_bg: gray;
+
+// Fonts
+
+// $font_1:	...;
+// $font_2: ...;
+// $font_3: ...;
+
+// Sizes and dimensions
+
+$header_height: 100px;
+$footer_height: 100px;
+
+$size_body: 16px;
+$size_h1: 26px;
+$size_h2: 22px;
+
+@include md {
+	$header_height: 80px;
+	$footer_height: 80px;
+
+	$size_body: 14px;
+	$size_h1: 24px;
+	$size_h2: 20px;
+}
+
+//* MIXINS *//
+
+// Colors
+
+@mixin disabled($default: false) {
+	&.disabled,
+	&[class*="_disabled_"] {
+		@if $default {
+			color: $disabled_color;
+			background: $disabled_bg;
+		}
+		pointer-events: none;
+		@content;
+	}
+}
+
+@mixin selected($default: false) {
+	&.selected,
+	&[class*="_selected_"] {
+		@if $default {
+			color: $selected_color;
+			background: $selected_bg;
+		}
+		@content;
+	}
+}

@@ -55,7 +55,7 @@ export default function Home({ merchant, products, categories }) {
 					<h2 className='text-2xl font-extrabold tracking-tight flex justify-center text-gray-900'>Customers also purchased</h2>
 					<div className='mt-6 grid grid-cols-2 gap-y-10 gap-x-1 lg:gap-x-1 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-1'>
 						{products.map(product => (
-							<ProductCard {...product} key={product.id} />
+							<ProductCard product={product} key={product.id} />
 						))}
 					</div>
 					<h2 className='flex justify-center text-bold py-12'>

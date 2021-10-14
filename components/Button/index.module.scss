@@ -1,0 +1,14 @@
+.button {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	cursor: pointer;
+}
+
+.disabled {
+	pointer-events: none;
+}
+
+// .selected {
+
+// }

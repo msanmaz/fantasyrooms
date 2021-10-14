@@ -1,0 +1,29 @@
+@import "variables";
+
+.color_option {
+	border-radius: 9999px;
+	width: 1.25rem;
+	height: 1.25rem;
+	box-sizing: border-box;
+	transition: all 0.2s;
+
+	border: solid 1px #0000;
+	filter: drop-shadow(0 1px 2px #0002);
+
+	&:hover {
+		border: solid 1px black;
+		filter: drop-shadow(0 0 4px #0005);
+	}
+
+	@include disabled {
+		background-color: gray;
+		opacity: 0.5;
+	}
+
+	@include selected {
+		border: solid 1px black;
+		&:hover {
+			border: solid 2px black;
+		}
+	}
+}
