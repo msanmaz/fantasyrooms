@@ -6,10 +6,10 @@ import { changeItemQuantity, removeFromCart, selectCart, selectModal, setModal }
 
 import styles from './index.module.scss'
 
-const Cart = ({ id, props }) => {
+const Cart = ({ props }) => {
 	const dispatch = useDispatch()
 
-	const { subtotal, line_items } = useSelector(selectCart)
+	const { subtotal, line_items,id } = useSelector(selectCart)
 
 	const modal = useSelector(selectModal)
 

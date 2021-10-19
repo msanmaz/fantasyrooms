@@ -6,7 +6,6 @@ import { readCache } from 'lib/cache'
 import CategoryList from 'components/CategoryList'
 import Cats from 'components/Cats'
 import Hero from 'components/Hero'
-import ProductList from 'components/Products/productList'
 import ProductCard from 'components/ProductCard'
 
 export const getStaticProps = wrapper.getStaticProps(store => async () => {
@@ -31,6 +30,7 @@ export const getStaticProps = wrapper.getStaticProps(store => async () => {
 // }
 
 export default function Home({ merchant, products, categories }) {
+	
 	return (
 		<>
 			<Hero />

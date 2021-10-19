@@ -9,7 +9,6 @@ import styles from './index.module.scss'
 
 function Navbar() {
 	const categories = useSelector(selectCategories)
-
 	// const [cats, setCats] = useState([])
 
 	// ! you already get categories from SSG props, no reason to request them again
@@ -66,6 +65,10 @@ function Navbar() {
 				</li>
 			))[categories]
 	)
+
+	console.log(categoryButtons,"cats")
+
+
 
 	return (
 		<div className='bg-white w-full sticky top-0 z-30'>
@@ -174,7 +177,7 @@ function Navbar() {
 									</li>
 								</ul>
 							</div>
-
+			
 							<div>
 								<p id='women-accessories-heading-mobile' className='font-medium text-gray-900'>
 									Toys
@@ -298,8 +301,8 @@ function Navbar() {
 								<a href='#'>
 									<span className='sr-only'>Workflow</span>
 									<img
-										className='h-8 w-auto'
-										src='https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600'
+										className='h-10 w-auto'
+										src='/shadow.png'
 										alt=''
 									/>
 								</a>
@@ -382,10 +385,11 @@ function Navbar() {
 																	aria-labelledby='Clothing-heading'
 																	className='mt-6 space-y-6 sm:mt-4 sm:space-y-4'
 																>
-																	{categoryButtons}
+																	
 																	<li className='flex'>
 																		<a href='#' className='hover:text-gray-800'>
-																			Browse All
+																		{categoryButtons}
+
 																		</a>
 																	</li>
 																</ul>
@@ -539,11 +543,11 @@ function Navbar() {
 									</div>
 
 									<a href='#' className='flex items-center text-sm font-medium text-gray-700 hover:text-gray-800'>
-										Company
+										About
 									</a>
 
 									<a href='#' className='flex items-center text-sm font-medium text-gray-700 hover:text-gray-800'>
-										Stores
+										Contact
 									</a>
 								</div>
 							</div>
@@ -578,7 +582,7 @@ function Navbar() {
 								</div>
 
 								<div className='ml-4 flow-root lg:ml-6' onClick={() => dispatch(setModal(1))}>
-									<a
+									<div
 										href='#' // why do you put empty links inside your buttons?
 										className='group -m-2 p-2 hover:bg-purple-700 flex items-center bg-purple-600 text-gray-50 px-4 rounded-full'
 									>
@@ -599,7 +603,7 @@ function Navbar() {
 										</svg>
 										<span className='ml-2 text-sm font-medium text-white '>Cart {numCartItems}</span>
 										<span className='sr-only'>items in cart, view bag</span>
-									</a>
+									</div>
 								</div>
 							</div>
 						</div>
