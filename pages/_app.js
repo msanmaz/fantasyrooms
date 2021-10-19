@@ -1,5 +1,5 @@
 import { wrapper } from 'lib/redux'
-import Layout from '../components/Layout/index'
+import Layout from '../components/Layout/index.js'
 import 'styles/globals.scss'
 
 const App = ({ Component, pageProps }) => <Layout Component={Component} pageProps={pageProps} />
