@@ -9,6 +9,7 @@ import styles from './index.module.scss'
 
 function Navbar() {
 	const categories = useSelector(selectCategories)
+	console.log(categories)
 	// const [cats, setCats] = useState([])
 
 	// ! you already get categories from SSG props, no reason to request them again
@@ -57,16 +58,15 @@ function Navbar() {
 	// Did you mean to have different slices of categories show up?
 	const categoryButtons = useMemo(
 		() =>
-			categories.map(({ name, slug }) => (
+			categories.map(category => (
 				<li className='flex'>
-					<Link href={`/categories/${slug}`} className='hover:text-gray-800'>
-						<p className='hover:text-gray-800 text-gray-500 cursor-pointer'>{name}</p>
+					<Link href={`/categories/${category.slug}`} className='hover:text-gray-800'>
+						<p className='hover:text-gray-800 text-gray-500 cursor-pointer'>{category.name}</p>
 					</Link>
 				</li>
 			))[categories]
 	)
 
-	console.log(categoryButtons,"cats")
 
 
 
@@ -169,7 +169,13 @@ function Navbar() {
 									Clothing
 								</p>
 								<ul role='list' aria-labelledby='women-clothing-heading-mobile' className='mt-6 flex flex-col space-y-6'>
-									{categoryButtons}
+								{categories.map(category => (
+				<li className='flex'>
+					<Link href={`/categories/${category.slug}`} className='hover:text-gray-800'>
+						<p className='hover:text-gray-800 text-gray-500 cursor-pointer'>{category.name}</p>
+					</Link>
+				</li>
+			))}
 									<li className='flow-root'>
 										<a href='#' className='-m-2 p-2 block text-gray-500'>
 											Browse All
@@ -385,13 +391,13 @@ function Navbar() {
 																	aria-labelledby='Clothing-heading'
 																	className='mt-6 space-y-6 sm:mt-4 sm:space-y-4'
 																>
-																	
-																	<li className='flex'>
-																		<a href='#' className='hover:text-gray-800'>
-																		{categoryButtons}
-
-																		</a>
-																	</li>
+												{categories.map(category => (
+				<li className='flex'>
+					<Link href={`/categories/${category.slug}`} className='hover:text-gray-800'>
+						<p className='hover:text-gray-800 text-gray-500 cursor-pointer'>{category.name}</p>
+					</Link>
+				</li>
+			))}
 																</ul>
 															</div>
 

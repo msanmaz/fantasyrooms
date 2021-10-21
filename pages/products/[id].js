@@ -10,7 +10,7 @@ import { useImmer } from 'use-immer'
 import Link from 'next/link'
 
 import { IconButton } from '@material-ui/core'
-import { AddShoppingCart, Close } from '@material-ui/icons'
+import { AddShoppingCart, Close, Error } from '@material-ui/icons'
 // import CloseIcon from '@material-ui/icons/Close'
 import Snackbar from '@material-ui/core/Snackbar'
 
@@ -74,6 +74,7 @@ export default function ProductPage({ product }) {
 		const s = {
 			snack: false,
 			valid: true,
+			snake: false,
 		}
 		if (variant_groups?.length) {
 			const options = {}
@@ -163,24 +164,39 @@ export default function ProductPage({ product }) {
 			draft.snack = false
 		})
 	})
+	const openSnack = useCallback(() => {
+		setState(draft => {
+			draft.snake = true
+		})
+	})
+
+	const closeSnake = useCallback(() => {
+		setState(draft => {
+			draft.snake = false
+		})
+	})
 
 	const openCart = useCallback(() => {
 		closeSnack()
 		dispatch(setModal(1))
 	})
 
+
 	const onAddToCart = useCallback(() => {
 		if (!state.valid) {
-			throw Error('Cannot add to cart, invalid variants selection or out of stock, this should not happen')
+			openSnack()
 			return
 		}
 		if (quantity > 0) {
-			dispatch(addToCart(id, 1, state.variantID))
+			dispatch(addToCart(id, quantity, state.variantID))
 			setState(draft => {
 				// after adding to card reset options and price
 				Object.assign(draft, initialState)
 				draft.snack = true
 			})
+		}
+		if (quantity <= 0) {
+			openSnack()
 		}
 
 	}, [state.variantID])
@@ -198,13 +214,13 @@ export default function ProductPage({ product }) {
 	}
 	const getCat = () => {
 		const aya = product.categories
-		const mert =aya.map(img => ({
+		const mert = aya.map(img => ({
 			cat: `${img.name}`,
 		}))
 		const json = JSON.stringify(mert[1].cat)
-		const noqou =json.replace(/"([^"]+(?="))"/g, '$1')
+		const noqou = json.replace(/"([^"]+(?="))"/g, '$1')
 		setCats(noqou)
-			
+
 	}
 	const categor = useMemo(getCat, [])
 	const formattedData = useMemo(getImages, [])
@@ -218,55 +234,57 @@ export default function ProductPage({ product }) {
 	return (
 		<>
 
-			<div className="flex justify-center flex-wrap mt-2 mx-2 h-full w-full">
+			<div className="flex justify-center flex-wrap mt-2 mx-auto md:mx-32 h-full w-full">
 
 				<div className="flex w-3/4 md:w-1/2 lg:w-2/6 px-4 my-2 ">
 					<ImageGallery thumbnailPosition={'bottom'} showNav={false} showPlayButton={false} items={images} />
 				</div>
 
 
-				<div className="w-full flex flex-col md:w-1/2 lg:w-1/2 px-4 my-2">
-				<h1 className="text-xl tracking-tight font-bold text-black my-6  md:text-2xl">
-					<Link href={`/categories/${cats}`}>
-					{cats}
-					</Link>
+				<div className="w-full flex flex-col md:w-1/2 lg:w-1/2 px-12 my-2 ml-0 md:ml-48 mx-auto">
+					<h1 className="text-xl tracking-tight font-bold text-black my-6  md:text-2xl">
+						<Link href={`/categories/${cats}`}>
+							{cats}
+						</Link>
 					</h1>
 
 					<h1 className="text-xl tracking-tight font-bold text-black mb-6  md:text-2xl">{product.name}</h1>
 					<div className="w-full flex flex-wrap md:flex-row">
 
 
-						<div className="md:w-1/3 w-full">
-						<p className="text-xl tracking-tight text-gray-600 mb-6  md:text-xl">{price.formatted_with_symbol}</p>
-					<p className="text-base tracking-tight font-bold text-black mb-4">Choose Size And Color</p>
-					{variantFilter}
+						<div className="md:w-5/12 w-full ">
+							<p className="text-xl tracking-tight text-gray-600 mb-6  md:text-xl">{price.formatted_with_symbol}</p>
+							<p className="text-base tracking-tight font-bold text-black mb-4">Choose Size And Color</p>
+							{variantFilter}
 
 
 
-					<div className="flex flex-row mt-4">
-					<button
-					onClick={() => {
-						if (quantity > 0) {
-							setQuantity(quantity - 1)
-						}
-					}}
-				>
-					-
-				</button>
-				{quantity}
-				<button onClick={() => setQuantity(quantity + 1)}>+</button>
+							<div className="flex flex-row mt-4">
 
+								<button onClick={() => {
+									if (quantity > 0) {
+										setQuantity(quantity - 1)
+									}
+								}} data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+									<span class="m-auto text-2xl font-thin">−</span>
+								</button>
 
-					</div>
-					<div className="flex flex-end">
-				<button onClick={onAddToCart} className="p-2 mt-6 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">Add to Cart</button>
+								<div type="number" class="px-4 outline-none focus:outline-none text-center bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700" name="custom-input-number">{quantity}</div>
 
-				</div>
+								<button onClick={() => setQuantity(quantity + 1)} data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+									<span class="m-auto text-2xl font-thin">+</span>
+								</button>
+							</div>
+							<div className="flex flex-end">
+								<button onClick={onAddToCart} className="p-2 mt-6 pl-5 pr-5 transition-colors transform duration-700  bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">Add to Cart</button>
+
+							</div>
 						</div>
 
-					<div className='md:w-4/6 w-full'>
-						<p className="text-base font-sans text-gray-700 ">{product.description}</p>
-					</div>
+						<div className='md:w-4/6 w-full '>
+							<h1 className="text-xl tracking-tight font-bold text-black my-6  md:text-2xl">Item Description</h1>
+							<p className="text-base font-sans text-gray-700 ">{product.description}</p>
+						</div>
 
 
 					</div>
@@ -295,6 +313,26 @@ export default function ProductPage({ product }) {
 					<>
 						<IconButton color='secondary' size='small' aria-label='Add To Cart' onClick={openCart}>
 							<AddShoppingCart style={{ fill: 'white' }} />
+						</IconButton>
+						<IconButton size='small' aria-label='close' color='inherit' onClick={closeSnack}>
+							<Close fontSize='small' />
+						</IconButton>
+					</>
+				}
+			/>
+			<Snackbar
+				anchorOrigin={{
+					vertical: 'bottom',
+					horizontal: 'left',
+				}}
+				open={state.snake}
+				autoHideDuration={5000}
+				onClose={closeSnake}
+				message='Choose Size and Color'
+				action={
+					<>
+						<IconButton color='secondary' size='small' aria-label='Add To Cart' onClick={openCart}>
+							<Error style={{ fill: 'white' }} />
 						</IconButton>
 						<IconButton size='small' aria-label='close' color='inherit' onClick={closeSnack}>
 							<Close fontSize='small' />

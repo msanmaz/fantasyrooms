@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { changeItemQuantity, removeFromCart, selectCart, selectModal, setModal } from 'lib/redux'
 
 import styles from './index.module.scss'
+import Backdrop from 'components/Backdrop'
 
 const Cart = ({ props }) => {
 	const dispatch = useDispatch()
@@ -29,6 +30,8 @@ const Cart = ({ props }) => {
 
 	return (
 		<aside className={cls}>
+						<Backdrop/>
+
 			<div className='overflow-hidden'>
 				{/* <!--
 					Background overlay, show/hide based on slide-over state.
